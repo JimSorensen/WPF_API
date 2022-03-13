@@ -21,5 +21,12 @@ namespace WPF_RestfulAPI.Model
 		[ForeignKey("Position")]
 		public int PositionId { get; set; }
 		public Position Position { get; set; }
+
+		[ForeignKey("Salary")]
+		public int SalaryId { get; set; }
+		public Salary Salary { get; set; }
+
+		public virtual PersonDetail PersonDetail { get; set; }
+
 	}
 }
