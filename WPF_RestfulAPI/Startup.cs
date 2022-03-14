@@ -17,12 +17,9 @@ namespace WPF_RestfulAPI
 {
 	public class Startup
 	{
-		public string ConnectionString { get; set; }
-
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
-			ConnectionString = Configuration.GetConnectionString("DefaultConnection");
 		}
 
 		public IConfiguration Configuration { get; }
@@ -32,8 +29,8 @@ namespace WPF_RestfulAPI
 		{
 			services.AddDbContext<APIDbContext>(options =>
 			options.UseMySql(
-					Configuration.GetConnectionString(ConnectionString),
-					ServerVersion.AutoDetect(Configuration.GetConnectionString(ConnectionString))));
+					Configuration.GetConnectionString("DefaultConnection"),
+					ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{

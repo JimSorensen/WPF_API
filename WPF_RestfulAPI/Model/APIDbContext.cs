@@ -13,6 +13,7 @@ namespace WPF_RestfulAPI.Model
 			: base(options)
 		{
 		}
+
 		public DbSet<Person> Persons { get; set; }
 		public DbSet<Position> Positions { get; set; }		
 		public DbSet<Salary> Salaries { get; set; }		
