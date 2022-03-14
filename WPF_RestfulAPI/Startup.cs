@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WPF_RestfulAPI.Model;
+using WPF_RestfulAPI.Services;
 
 namespace WPF_RestfulAPI
 {
@@ -27,11 +28,14 @@ namespace WPF_RestfulAPI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddControllers();
 			services.AddDbContext<APIDbContext>(options =>
 			options.UseMySql(
 					Configuration.GetConnectionString("DefaultConnection"),
 					ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
-			services.AddControllers();
+
+			services.AddTransient<DepartmentService>();
+
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "WPF_RestfulAPI", Version = "v1" });

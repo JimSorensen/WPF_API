@@ -9,6 +9,12 @@ namespace WPF_RestfulAPI.Model
 {
 	public class APIDbContext : DbContext
 	{
+		//private APIDbContext _context;
+		//public APIDbContext(APIDbContext context)
+		//{
+		//	_context = context;
+		//}
+
 		public APIDbContext(DbContextOptions<APIDbContext> options)
 			: base(options)
 		{
