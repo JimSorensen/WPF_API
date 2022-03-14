@@ -8,10 +8,10 @@ namespace WPF_RestfulAPI.Model
 {
 	public class Salary
 	{
-		public Salary()
-		{
-			Persons = new HashSet<Person>();
-		}
+		//public Salary()
+		//{
+		//	Persons = new HashSet<Person>();
+		//}
 
 		[Key]
 		public int SalaryId { get; set; }

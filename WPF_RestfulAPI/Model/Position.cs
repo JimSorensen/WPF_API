@@ -9,14 +9,14 @@ namespace WPF_RestfulAPI.Model
 {
 	public class Position
 	{
-		public Position()
-		{
-			Persons = new HashSet<Person>();
-		}
+		//public Position()
+		//{
+		//	Persons = new HashSet<Person>();
+		//}
 
 		[Key]
 		public int PositionId { get; set; }
-		public int Name { get; set; }
+		public string Name { get; set; }
 
 		public virtual ICollection<Person> Persons { get; set; }
 

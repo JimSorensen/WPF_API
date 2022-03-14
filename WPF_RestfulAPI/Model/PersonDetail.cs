@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,9 @@ namespace WPF_RestfulAPI.Model
 	{
 		public int Id { get; set; }
 		public string PersonCity { get; set; }
+
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{MM/dd/yyyy}")]
 		public DateTime BirtDay { get; set; }
 
 		[ForeignKey("Person")]
