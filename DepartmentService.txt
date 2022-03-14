@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using WPF_RestfulAPI.Model;
+using WPF_RestfulAPI.ViewModels;
+
+namespace WPF_RestfulAPI.Services
+{
+	public class DepartmentService
+	{
+		private APIDbContext _context;
+
+		public DepartmentService(APIDbContext context)
+		{
+			_context = context;
+		}
+
+		//GET: /api/Departments/get-all-departments
+		public List<Department> GetAllDepartments() => _context.Departments.ToList();
+
+		//GET: /api/Departments/get-Department-by-id/1
+		public DepartmentVM GetDepartmentById(int departmentId)
+		{
+			var _departments = _context.Departments.Where(n => n.DepartmentId == departmentId)
+				.Select(department => new DepartmentVM()
+				{
+					DepartmentName = department.DepartmentName
+				}).FirstOrDefault();
+			return _departments;
+		}
+
+		//POST: /api/Departments/create-Department
+		public void CreateDepartment(DepartmentVM department)
+		{
+			var _department = new Department()
+			{
+				DepartmentName = department.DepartmentName
+		    };
+			_context.Departments.Add(_department);
+			_context.SaveChanges();
+		}
+
+		//PUT: /api/Departments/update-department-by-id/1
+		public Department UpdateDepartmentById(int departmentId, DepartmentVM department)
+		{
+			var _department = _context.Departments.FirstOrDefault(n => n.DepartmentId == departmentId);
+			if(_department != null)
+			{
+				_department.DepartmentName = department.DepartmentName;
+				_context.SaveChanges();
+			}
+			return _department;
+		}
+
+		//DELETE: /api/Departments/delete-department-by-id/1
+		public void DeleteDepartmentById(int departmentId)
+		{
+			var _department = _context.Departments.FirstOrDefault(n => n.DepartmentId == departmentId);
+			if (_department != null)
+			{
+				_context.Departments.Remove(_department);
+				_context.SaveChanges();
+			}
+		}
+	}
+}
