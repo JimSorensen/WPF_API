@@ -28,13 +28,14 @@ namespace WPF_RestfulAPI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
 			services.AddDbContext<APIDbContext>(options =>
 			options.UseMySql(
 					Configuration.GetConnectionString("DefaultConnection"),
 					ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
 
 			services.AddTransient<DepartmentService>();
+			// services.AddCors();
+			services.AddControllers();
 
 			services.AddSwaggerGen(c =>
 			{
@@ -54,7 +55,12 @@ namespace WPF_RestfulAPI
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
-
+			//// global cors policy
+			//app.UseCors(x => x
+			//	.AllowAnyMethod()
+			//	.AllowAnyHeader()
+			//	.SetIsOriginAllowed(origin => true) // allow any origin
+			//	.AllowCredentials()); // allow credentials
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
