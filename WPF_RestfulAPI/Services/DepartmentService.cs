@@ -37,9 +37,30 @@ namespace WPF_RestfulAPI.Services
 				{
 					DepartmentName = department.DepartmentName,
 					CreateDate = department.CreateDate
-					
+
 				}).FirstOrDefault();
 			return _department;
+		}
+
+		public Department UpdateDepartmentById( int departmentId, DepartmentVM department)
+		{
+			var _department = _context.Departments.FirstOrDefault(n => n.DepartmentId == departmentId);
+			if (_department != null)
+			{
+				_department.DepartmentName = department.DepartmentName;
+				_context.SaveChanges();
+			}
+			return _department;
+		}
+
+		public void DeleteDepartmentById(int departmentId)
+		{
+			var _department = _context.Departments.FirstOrDefault(n => n.DepartmentId == departmentId);
+			if (_department != null)
+			{
+				_context.Departments.Remove(_department);
+				_context.SaveChanges();
+			}
 		}
 	}
 }

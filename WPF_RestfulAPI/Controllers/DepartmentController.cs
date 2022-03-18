@@ -7,7 +7,6 @@ using WPF_RestfulAPI.Model;
 using WPF_RestfulAPI.Services;
 using WPF_RestfulAPI.ViewModels;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WPF_RestfulAPI.Controllers
 {
@@ -41,6 +40,20 @@ namespace WPF_RestfulAPI.Controllers
 		{
 			var department = _departmentService.GetDepartmentById(id);
 			return Ok(department);
+		}
+
+		[HttpPut("update-department-by-id/{id}")]
+		public IActionResult UpdateDepartmentById(int id, [FromBody] DepartmentVM departmet)
+		{
+			var _updateDepartment = _departmentService.UpdateDepartmentById(id, departmet);
+			return Ok(_updateDepartment);
+		}
+
+		[HttpDelete("delete-department-by-id/{id}")]
+		public IActionResult DeleteDepartmentById(int id)
+		{
+			_departmentService.DeleteDepartmentById(id);
+			return Ok();
 		}
 
 	}

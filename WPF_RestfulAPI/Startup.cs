@@ -34,7 +34,8 @@ namespace WPF_RestfulAPI
 					ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
 
 			services.AddTransient<DepartmentService>();
-			// services.AddCors();
+			services.AddTransient<PersonService>();
+
 			services.AddControllers();
 
 			services.AddSwaggerGen(c =>
@@ -43,7 +44,7 @@ namespace WPF_RestfulAPI
 			});
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -55,12 +56,7 @@ namespace WPF_RestfulAPI
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
-			//// global cors policy
-			//app.UseCors(x => x
-			//	.AllowAnyMethod()
-			//	.AllowAnyHeader()
-			//	.SetIsOriginAllowed(origin => true) // allow any origin
-			//	.AllowCredentials()); // allow credentials
+			
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>

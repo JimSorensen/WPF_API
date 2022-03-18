@@ -9,16 +9,12 @@ namespace WPF_RestfulAPI.Model
 {
 	public class Position
 	{
-		//public Position()
-		//{
-		//	Persons = new HashSet<Person>();
-		//}
 
 		[Key]
 		public int PositionId { get; set; }
 		public string Name { get; set; }
 
-		public virtual ICollection<Person> Persons { get; set; }
+		public virtual List<Person> Persons { get; set; }
 
 		[ForeignKey("Department")]
 		public int DepartmentId { get; set; }

@@ -13,6 +13,6 @@ namespace WPF_RestfulAPI.Model
 		public string DepartmentName { get; set; }
 
 		public DateTimeOffset CreateDate { get; init; }
-		public virtual ICollection<Position> Positions { get; set; }
+		public virtual List<Position> Positions { get; set; }
 	}
 }
