@@ -9,7 +9,7 @@ namespace WPF_RestfulAPI.Services
 {
 	public class DepartmentService
 	{
-		private readonly APIDbContext _context;
+		private APIDbContext _context;
 
 		public DepartmentService(APIDbContext context)
 		{
@@ -39,6 +39,7 @@ namespace WPF_RestfulAPI.Services
 					CreateDate = department.CreateDate
 
 				}).FirstOrDefault();
+
 			return _department;
 		}
 
