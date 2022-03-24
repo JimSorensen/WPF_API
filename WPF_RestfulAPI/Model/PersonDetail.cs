@@ -12,12 +12,10 @@ namespace WPF_RestfulAPI.Model
 		public int Id { get; set; }
 		public string PersonCity { get; set; }
 		public DateTime BirthDay { get; set; }
+		public DateTimeOffset CreateDate { get; init; }
 
 		[ForeignKey("Person")]
 		public int PersonId { get; set; }
 		public Person Person { get; set; }
 	}
 }
-
-//[DataType(DataType.Date)]
-//[DisplayFormat(DataFormatString = "{MM/dd/yyyy}")]

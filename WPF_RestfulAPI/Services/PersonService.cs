@@ -23,9 +23,11 @@ namespace WPF_RestfulAPI.Services
 			var _person = new Person()
 			{
 				Name = person.Name,
+				Surname = person.Surname,
 				Age = person.Age,
-				Adress = person.Adress,
-				Email = person.Email				
+				Email = person.Email,
+				Password = person.Password,
+				Adress = person.Adress
 			};
 			_context.Persons.Add(_person);
 			_context.SaveChanges();
@@ -37,9 +39,11 @@ namespace WPF_RestfulAPI.Services
 				.Select(person => new PersonVM()
 				{
 					Name = person.Name,
+					Surname = person.Surname,
 					Age = person.Age,
-					Adress = person.Adress,
-					Email = person.Email
+					Email = person.Email,
+					Password = person.Password,
+					Adress = person.Adress
 
 				}).FirstOrDefault();
 			return _person;
@@ -51,9 +55,12 @@ namespace WPF_RestfulAPI.Services
 			if (_person != null)
 			{
 				_person.Name = person.Name;
+				_person.Surname = person.Surname;
 				_person.Age = person.Age;
-				_person.Adress = person.Adress;
 				_person.Email = person.Email;
+				_person.Password = person.Password;
+				_person.Adress = person.Adress;
+
 				_context.SaveChanges();
 			}
 			return _person;

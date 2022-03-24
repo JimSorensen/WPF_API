@@ -8,11 +8,15 @@ namespace WPF_RestfulAPI.Model
 {
 	public class Department
 	{
+		public Department()
+		{			
+			Persons = new HashSet<Person>();			
+		}
+
 		[Key]
 		public int DepartmentId { get; set; }
 		public string DepartmentName { get; set; }
 
-		public DateTimeOffset CreateDate { get; init; }
-		public List<Position> Positions { get; set; }
+		public virtual ICollection<Person> Persons { get; set; }
 	}
 }

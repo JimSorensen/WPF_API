@@ -20,11 +20,40 @@ namespace WPF_RestfulAPI.Controllers
 			_positionService = positionService;
 		}
 
+		[HttpGet("get-all-positions")]
+		public IActionResult GetAllPositions()
+		{
+			var allPositions = _positionService.GetAllPositions();
+			return Ok(allPositions);
+		}
+
 		[HttpPost("add-position")]
 		public IActionResult AddPosition([FromBody] PositionVM position)
 		{
 			_positionService.AddPosition(position);
 			return Ok();
 		}
+
+		[HttpGet("get-position-by-id/{id}")]
+		public IActionResult GetPositionById(int id)
+		{
+			var position = _positionService.GetPositionById(id);
+			return Ok(position);
+		}
+
+		[HttpPut("update-position-by-id/{id}")]
+		public IActionResult UpdatePositionById(int id, [FromBody] PositionVM position)
+		{
+			var _updatePosition = _positionService.UpdatePositionById(id, position);
+			return Ok(_updatePosition);
+		}
+
+		[HttpDelete("delete-pposition-by-id/{id}")]
+		public IActionResult DeletePositionById(int id)
+		{
+			_positionService.DeletePositionById(id);
+			return Ok();
+		}
+
 	}
 }

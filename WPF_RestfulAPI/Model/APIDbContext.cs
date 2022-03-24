@@ -21,5 +21,3 @@ namespace WPF_RestfulAPI.Model
 		public DbSet<PersonDetail> PersonDetails { get; set; }
 	}
 }
-
-//optionsBuilder.UseMySql("server=mysql73.unoeuro.com;user id=softwarejs_com;database=softwarejs_com_db_wpf_api;persistsecurityinfo=True")
