@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WPF_RestfulAPI.Model;
 using WPF_RestfulAPI.ViewModels;
 
@@ -22,7 +20,7 @@ namespace WPF_RestfulAPI.Services
 		{
 			var _position = new Position()
 			{
-				Name = position.Name				
+				PositionName = position.PositionName
 			};
 			_context.Positions.Add(_position);
 			_context.SaveChanges();
@@ -30,11 +28,10 @@ namespace WPF_RestfulAPI.Services
 
 		public PositionVM GetPositionById(int positionId)
 		{
-			var _position = _context.Persons.Where(n => n.PositionId == positionId)
+			var _position = _context.Positions.Where(n => n.PositionId == positionId)
 				.Select(position => new PositionVM()
 				{
-					Name = position.Name
-					
+					PositionName = position.PositionName
 				}).FirstOrDefault();
 
 			return _position;
@@ -45,7 +42,7 @@ namespace WPF_RestfulAPI.Services
 			var _position = _context.Positions.FirstOrDefault(n => n.PositionId == positionId);
 			if (_position != null)
 			{
-				_position.Name = position.Name;		
+				_position.PositionName = position.PositionName;
 
 				_context.SaveChanges();
 			}

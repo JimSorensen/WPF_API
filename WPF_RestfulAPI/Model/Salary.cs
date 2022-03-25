@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WPF_RestfulAPI.Model
 {
@@ -15,6 +12,7 @@ namespace WPF_RestfulAPI.Model
 
 		[Key]
 		public int SalaryId { get; set; }
+
 		public int Amount { get; set; }
 		public virtual ICollection<Person> Persons { get; set; }
 	}

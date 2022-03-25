@@ -48,12 +48,11 @@ namespace WPF_RestfulAPI.Controllers
 			return Ok(_updatePosition);
 		}
 
-		[HttpDelete("delete-pposition-by-id/{id}")]
+		[HttpDelete("delete-position-by-id/{id}")]
 		public IActionResult DeletePositionById(int id)
 		{
 			_positionService.DeletePositionById(id);
 			return Ok();
 		}
-
 	}
 }
