@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WPF_RestfulAPI.Model;
 using WPF_RestfulAPI.ViewModels;
 
@@ -22,7 +20,7 @@ namespace WPF_RestfulAPI.Services
 		{
 			var _department = new Department()
 			{
-				DepartmentName = department.DepartmentName				
+				DepartmentName = department.DepartmentName
 			};
 			_context.Departments.Add(_department);
 			_context.SaveChanges();
@@ -34,13 +32,12 @@ namespace WPF_RestfulAPI.Services
 				.Select(department => new DepartmentVM()
 				{
 					DepartmentName = department.DepartmentName
-
 				}).FirstOrDefault();
 
 			return _department;
 		}
 
-		public Department UpdateDepartmentById( int departmentId, DepartmentVM department)
+		public Department UpdateDepartmentById(int departmentId, DepartmentVM department)
 		{
 			var _department = _context.Departments.FirstOrDefault(n => n.DepartmentId == departmentId);
 			if (_department != null)

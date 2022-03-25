@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WPF_RestfulAPI.Model;
 using WPF_RestfulAPI.Services;
 using WPF_RestfulAPI.ViewModels;
-
 
 namespace WPF_RestfulAPI.Controllers
 {
@@ -55,6 +49,5 @@ namespace WPF_RestfulAPI.Controllers
 			_departmentService.DeleteDepartmentById(id);
 			return Ok();
 		}
-
 	}
 }

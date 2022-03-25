@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using WPF_RestfulAPI.ViewModels;
 
 namespace WPF_RestfulAPI.Model
 {
@@ -11,18 +9,19 @@ namespace WPF_RestfulAPI.Model
 	{
 		public Position()
 		{
-			Persons = new HashSet<Person>();
+			Persons = new HashSet<PersonVM>();
 		}
 
 		[Key]
 		public int PositionId { get; set; }
-		public string Name { get; set; }
 
-		public virtual ICollection<Person> Persons { get; set; }
+		public string PositionName { get; set; }
+
+		public ICollection<PersonVM> Persons { get; set; }
 
 		[ForeignKey("Department")]
 		public int DepartmentId { get; set; }
+
 		public Department Department { get; set; }
 	}
 }
-
