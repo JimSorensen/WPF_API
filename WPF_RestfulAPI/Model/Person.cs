@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WPF_RestfulAPI.Model
 {
-	public class Person
+	public class Person //Kan have en position og en salary (Mange til en)
 	{
 		[Key]
 		public int Id { get; set; }
-		public string Name { get; set; }
+
+		public string FirstName { get; set; }
 		public string Surname { get; set; }
 		public int Age { get; set; }
 		public string Email { get; set; }
@@ -26,6 +23,6 @@ namespace WPF_RestfulAPI.Model
 		public int SalaryId { get; set; }
 		public Salary Salary { get; set; }
 
-		public virtual PersonDetail PersonDetail { get; set; }                   // En PersonDetail kan kun have en person
+		public virtual PersonDetail PersonDetail { get; set; }   // En til en                // En PersonDetail kan kun have en person
 	}
 }

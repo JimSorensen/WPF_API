@@ -11,6 +11,6 @@ namespace WPF_RestfulAPI.ViewModels
 		public string DepartmentName { get; set; }
 
 		public DateTimeOffset CreateDate { get; init; }
-		public virtual List<Position> Positions { get; set; }
+		public List<Position> Positions { get; set; }
 	}
 }

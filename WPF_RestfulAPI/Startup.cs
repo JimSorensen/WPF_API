@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WPF_RestfulAPI.Model;
 using WPF_RestfulAPI.Services;
 
@@ -34,7 +28,10 @@ namespace WPF_RestfulAPI
 					ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
 
 			services.AddTransient<DepartmentService>();
+			services.AddTransient<PersonDetailService>();
 			services.AddTransient<PersonService>();
+			services.AddTransient<PositionService>();
+			services.AddTransient<SalaryService>();
 
 			services.AddControllers();
 
@@ -44,7 +41,6 @@ namespace WPF_RestfulAPI
 			});
 		}
 
-		
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -56,7 +52,7 @@ namespace WPF_RestfulAPI
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
-			
+
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
@@ -66,3 +62,12 @@ namespace WPF_RestfulAPI
 		}
 	}
 }
+
+#region Link til Udemy video
+
+/* https://www.udemy.com/course/the-complete-guide-to-aspnet-web-api/learn/lecture/
+ *
+ https://www.udemy.com/course/c-restful-api-and-wpf-core-with-mssql-ef-core/learn/lecture/
+ */
+
+#endregion Link til Udemy video

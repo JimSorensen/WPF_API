@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WPF_RestfulAPI.Model;
 using WPF_RestfulAPI.ViewModels;
 
@@ -11,18 +8,19 @@ namespace WPF_RestfulAPI.Services
 	public class PersonService
 	{
 		private readonly APIDbContext _context;
+
 		public PersonService(APIDbContext context)
 		{
 			_context = context;
 		}
 
 		public List<Person> GetAllPersons() => _context.Persons.ToList();
-		
+
 		public void AddPerson(PersonVM person)
 		{
 			var _person = new Person()
 			{
-				Name = person.Name,
+				FirstName = person.FirstName,
 				Surname = person.Surname,
 				Age = person.Age,
 				Email = person.Email,
@@ -38,13 +36,12 @@ namespace WPF_RestfulAPI.Services
 			var _person = _context.Persons.Where(n => n.Id == personId)
 				.Select(person => new PersonVM()
 				{
-					Name = person.Name,
+					FirstName = person.FirstName,
 					Surname = person.Surname,
 					Age = person.Age,
 					Email = person.Email,
 					Password = person.Password,
 					Adress = person.Adress
-
 				}).FirstOrDefault();
 			return _person;
 		}
@@ -54,7 +51,7 @@ namespace WPF_RestfulAPI.Services
 			var _person = _context.Persons.FirstOrDefault(n => n.Id == personId);
 			if (_person != null)
 			{
-				_person.Name = person.Name;
+				_person.FirstName = person.FirstName;
 				_person.Surname = person.Surname;
 				_person.Age = person.Age;
 				_person.Email = person.Email;
@@ -75,6 +72,5 @@ namespace WPF_RestfulAPI.Services
 				_context.SaveChanges();
 			}
 		}
-
 	}
 }
