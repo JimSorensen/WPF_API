@@ -20,7 +20,7 @@ namespace WPF_RestfulAPI.Services
 		{
 			var _person = new Person()
 			{
-				FirstName = person.FirstName,
+				FirstName = person.Name,
 				Surname = person.Surname,
 				Age = person.Age,
 				Email = person.Email,
@@ -36,7 +36,7 @@ namespace WPF_RestfulAPI.Services
 			var _person = _context.Persons.Where(n => n.Id == personId)
 				.Select(person => new PersonVM()
 				{
-					FirstName = person.FirstName,
+					Name = person.FirstName,
 					Surname = person.Surname,
 					Age = person.Age,
 					Email = person.Email,
@@ -51,7 +51,7 @@ namespace WPF_RestfulAPI.Services
 			var _person = _context.Persons.FirstOrDefault(n => n.Id == personId);
 			if (_person != null)
 			{
-				_person.FirstName = person.FirstName;
+				_person.FirstName = person.Name;
 				_person.Surname = person.Surname;
 				_person.Age = person.Age;
 				_person.Email = person.Email;
