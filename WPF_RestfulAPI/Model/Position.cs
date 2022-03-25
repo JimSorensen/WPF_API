@@ -9,7 +9,7 @@ namespace WPF_RestfulAPI.Model
 	{
 		public Position()
 		{
-			Persons = new HashSet<PersonVM>();
+			Persons = new HashSet<Person>();
 		}
 
 		[Key]
@@ -17,7 +17,7 @@ namespace WPF_RestfulAPI.Model
 
 		public string PositionName { get; set; }
 
-		public ICollection<PersonVM> Persons { get; set; }
+		public ICollection<Person> Persons { get; set; }
 
 		[ForeignKey("Department")]
 		public int DepartmentId { get; set; }
