@@ -20,7 +20,7 @@ namespace WPF_RestfulAPI.Services
 		{
 			var _department = new Department()
 			{
-				DepartmentName = department.DepartmentName,
+				DepartmentName = department.DepartmentName
 			};
 			_context.Departments.Add(_department);
 			_context.SaveChanges();
