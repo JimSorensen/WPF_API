@@ -25,5 +25,6 @@ namespace WPF_RestfulAPI.ViewModels
 		public Salary Salary { get; set; }
 
 		public virtual PersonDetail PersonDetail { get; set; }
+		//
 	}
 }
