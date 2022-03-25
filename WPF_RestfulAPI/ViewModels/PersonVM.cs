@@ -7,7 +7,7 @@ namespace WPF_RestfulAPI.ViewModels
 	
 	public class PersonVM
 	{
-		public string FirstName { get; set; }
+		public string Name { get; set; }
 		public string Surname { get; set; }
 		public int Age { get; set; }
 		public string Email { get; set; }
